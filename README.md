@@ -34,7 +34,7 @@ When you run `/speckit.constitution`, Time Machine automatically checks whether
 your project has existing source files:
 
 - **Existing codebase** — the extension fires and asks **once**:
-  *"Existing source code detected. Would you like to analyse the codebase and build a feature queue?"*
+  _"Existing source code detected. Would you like to analyse the codebase and build a feature queue?"_
   Answering yes kicks off `analyze` immediately.
 - **New / empty project** — the extension does **nothing**. No prompt, no
   interruption. Time Machine is designed for brownfield projects and stays
@@ -141,10 +141,10 @@ features:
 
 ## Hooks
 
-| Hook                 | Fires after             | Behaviour                                                                                                           |
-| -------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Hook                 | Fires after             | Behaviour                                                                                                                                            |
+| -------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `after_constitution` | `/speckit.constitution` | Checks for existing source files. **Prompts to run `analyze` only if source files are found.** Completely silent and inactive on new empty projects. |
-| `after_implement`    | `/speckit.implement`    | Optional prompt to continue to the next feature (useful if you stopped mid-queue).                                  |
+| `after_implement`    | `/speckit.implement`    | Optional prompt to continue to the next feature (useful if you stopped mid-queue).                                                                   |
 
 ---
 
