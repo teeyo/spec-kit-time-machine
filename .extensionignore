@@ -1,0 +1,5 @@
+# Files excluded from the installed copy of the extension
+
+.github/
+.gitignore
+CHANGELOG.md

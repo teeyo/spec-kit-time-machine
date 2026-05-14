@@ -1,0 +1,64 @@
+schema_version: "1.0"
+
+extension:
+  id: "time-machine"
+  name: "Time Machine"
+  version: "1.0.0"
+  description: "Retroactively apply the full SDD workflow to existing codebases — analyse, spec, and ship feature-by-feature"
+  author: "te3yo"
+  repository: "https://github.com/te3yo/spec-kit-time-machine"
+  license: "MIT"
+  homepage: "https://github.com/te3yo/spec-kit-time-machine"
+
+requires:
+  speckit_version: ">=0.1.0"
+  tools:
+    - name: "git"
+      required: true
+  commands:
+    - "speckit.specify"
+    - "speckit.clarify"
+    - "speckit.plan"
+    - "speckit.tasks"
+    - "speckit.implement"
+
+provides:
+  commands:
+    - name: "speckit.time-machine.bootstrap"
+      file: "commands/bootstrap.md"
+      description: "Silently check for existing source code and offer to start Time Machine (called via hook)"
+
+    - name: "speckit.time-machine.analyze"
+      file: "commands/analyze.md"
+      description: "Scan the codebase and generate a sequenced feature queue"
+
+    - name: "speckit.time-machine.next"
+      file: "commands/next.md"
+      description: "Run the full SDD workflow (specify → clarify → plan → tasks → implement) for the next queued feature"
+
+    - name: "speckit.time-machine.status"
+      file: "commands/status.md"
+      description: "Show feature queue progress"
+
+  config:
+    - name: "time-machine-config.yml"
+      template: "time-machine-config.template.yml"
+      description: "Time Machine configuration (branch prefix, skip patterns, etc.)"
+      required: false
+
+hooks:
+  after_constitution:
+    command: "speckit.time-machine.bootstrap"
+    optional: false
+    description: "Silently detect existing source code; only prompts if code is found"
+
+  after_implement:
+    command: "speckit.time-machine.next"
+    optional: true
+    prompt: "Feature implemented. Continue to the next feature in the queue?"
+
+tags:
+  - "brownfield"
+  - "automation"
+  - "workflow"
+  - "process"

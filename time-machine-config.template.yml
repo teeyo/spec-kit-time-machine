@@ -1,0 +1,21 @@
+# Time Machine Extension Configuration
+# Copy this file to time-machine-config.yml and customise.
+# Values here are the defaults — uncomment and change what you need.
+
+# Prefix used when creating branches for each feature.
+# Default: feature/time-machine-
+# branch_prefix: "feature/time-machine-"
+
+# Patterns (glob) for files/directories to ignore during codebase analysis.
+# These are in addition to the built-in defaults (node_modules, dist, .git, etc.)
+# ignore_patterns:
+#   - "legacy/**"
+#   - "**/*.generated.ts"
+
+# Maximum number of features the analyzer will create.
+# Useful for very large codebases where you want to start small.
+# max_features: 15
+
+# After each feature is done, automatically prompt to push the branch
+# without waiting for explicit confirmation.
+# auto_push_prompt: true
