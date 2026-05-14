@@ -28,11 +28,17 @@ branch, running all features sequentially without stopping.
 5. After all features are done, if any branches were not pushed, prints a full
    summary with the exact `git push` commands for each outstanding branch
 
-### Automatic hook on existing projects
+### Automatic detection on `speckit.constitution`
 
-When you run `/speckit.constitution` in a project that already has source code,
-Time Machine's `bootstrap` command fires automatically and asks **once** whether
-you want to analyse the codebase. New, empty projects are silently ignored.
+When you run `/speckit.constitution`, Time Machine automatically checks whether
+your project has existing source files:
+
+- **Existing codebase** — the extension fires and asks **once**:
+  *"Existing source code detected. Would you like to analyse the codebase and build a feature queue?"*
+  Answering yes kicks off `analyze` immediately.
+- **New / empty project** — the extension does **nothing**. No prompt, no
+  interruption. Time Machine is designed for brownfield projects and stays
+  completely out of the way when there is nothing to retroactively spec.
 
 ---
 
@@ -135,10 +141,10 @@ features:
 
 ## Hooks
 
-| Hook | Fires after | Behaviour |
-|---|---|---|
-| `after_constitution` | `/speckit.constitution` | Silently checks for existing source files; prompts to run `analyze` only if code is found. No-op on empty projects. |
-| `after_implement` | `/speckit.implement` | Optional prompt to continue to the next feature (useful if you stopped mid-queue). |
+| Hook                 | Fires after             | Behaviour                                                                                                           |
+| -------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `after_constitution` | `/speckit.constitution` | Checks for existing source files. **Prompts to run `analyze` only if source files are found.** Completely silent and inactive on new empty projects. |
+| `after_implement`    | `/speckit.implement`    | Optional prompt to continue to the next feature (useful if you stopped mid-queue).                                  |
 
 ---
 
