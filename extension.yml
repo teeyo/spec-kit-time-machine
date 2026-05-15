@@ -24,10 +24,6 @@ requires:
 
 provides:
   commands:
-    - name: "speckit.time-machine.bootstrap"
-      file: "commands/bootstrap.md"
-      description: "Silently check for existing source code and offer to start Time Machine (called via hook)"
-
     - name: "speckit.time-machine.analyze"
       file: "commands/analyze.md"
       description: "Scan the codebase and generate a sequenced feature queue"
@@ -47,11 +43,6 @@ provides:
       required: false
 
 hooks:
-  after_constitution:
-    command: "speckit.time-machine.bootstrap"
-    optional: false
-    description: "Silently detect existing source code; only prompts if code is found"
-
   after_implement:
     command: "speckit.time-machine.next"
     optional: true

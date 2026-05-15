@@ -19,7 +19,29 @@ Accepted flags:
 
 ## Steps
 
-### 1. Check for an existing queue
+### 1. Check for existing source code
+
+Scan the project root for source files, excluding:
+
+- `.specify/`
+- `.github/`
+- `node_modules/`
+- `dist/`, `build/`, `out/`
+- `.git/`
+- `vendor/`, `__pycache__/`, `.venv/`
+- Common lock files (`*.lock`, `package-lock.json`, `yarn.lock`)
+
+If **no source files are found**, stop and tell the user:
+
+```
+There is no existing source code to create specs for.
+```
+
+If source files are found, continue.
+
+---
+
+### 3. Check for an existing queue
 
 Look for `.specify/extensions/time-machine/features-queue.yml`.
 
@@ -30,7 +52,7 @@ Look for `.specify/extensions/time-machine/features-queue.yml`.
 
 ---
 
-### 2. Understand the project
+### 4. Understand the project
 
 Read the following to build context before identifying features:
 
@@ -46,7 +68,7 @@ Ignore these paths entirely — they are not source features:
 
 ---
 
-### 3. Identify features
+### 5. Identify features
 
 Group the remaining source files into **logical, user-facing features**. Each
 feature should represent a cohesive unit that can be specced and implemented
@@ -64,7 +86,7 @@ Rules:
 
 ---
 
-### 4. Write the queue file
+### 6. Write the queue file
 
 Create `.specify/extensions/time-machine/` if it does not already exist.
 
@@ -83,6 +105,7 @@ features:
     files:
       - "<relative/path/to/file-or-directory>"
     status: pending # pending | in-progress | done | skipped
+    current_phase: null # null | specify | clarify | plan | tasks | implement
     branch: null    pushed: null           # null | true | false    started_at: null
     completed_at: null
   # ... repeat for each feature
@@ -90,7 +113,7 @@ features:
 
 ---
 
-### 5. Confirm to the user
+### 7. Confirm to the user
 
 Print a summary in this format:
 
