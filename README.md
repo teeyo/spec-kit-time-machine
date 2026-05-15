@@ -134,11 +134,11 @@ Satisfied with the result?
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-| Option | Behaviour |
-| --- | --- |
-| `yes` | Proceeds to the push gate, then starts the next feature |
-| `redo` | Asks which phase to restart from; re-runs everything from that point |
-| `skip` | Marks the feature `skipped` and immediately moves to the next one |
+| Option    | Behaviour                                                                                                                   |
+| --------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `yes`     | Proceeds to the push gate, then starts the next feature                                                                     |
+| `redo`    | Asks which phase to restart from; re-runs everything from that point                                                        |
+| `skip`    | Marks the feature `skipped` and immediately moves to the next one                                                           |
 | `wrap up` | Marks the feature `done`, commits all changes on the branch, and stops — run `next` again to continue from the next feature |
 
 **Push gate:**
@@ -162,12 +162,12 @@ Push branch "feature/time-machine-auth" to remote? [yes / no]
 
 #### Flags
 
-| Flag | Description |
-| --- | --- |
-| `--feature <id>` | Start (or resume) from a specific feature |
-| `--from <phase>` | Used with `--feature` — resume from a specific phase (`specify`, `clarify`, `plan`, `tasks`, `implement`) |
-| `--include-skipped` | Re-run all previously skipped features after any remaining pending ones |
-| `--redo <id>` | Force re-run any feature regardless of its current status, resetting it from scratch |
+| Flag                | Description                                                                                               |
+| ------------------- | --------------------------------------------------------------------------------------------------------- |
+| `--feature <id>`    | Start (or resume) from a specific feature                                                                 |
+| `--from <phase>`    | Used with `--feature` — resume from a specific phase (`specify`, `clarify`, `plan`, `tasks`, `implement`) |
+| `--include-skipped` | Re-run all previously skipped features after any remaining pending ones                                   |
+| `--redo <id>`       | Force re-run any feature regardless of its current status, resetting it from scratch                      |
 
 ```
 # Resume from a specific feature
